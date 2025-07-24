@@ -95,7 +95,7 @@ addEventListener("load", async () => {
         
         metrics.signalOnStreamChunk();
 
-        outputEl.textContent += chunk;
+        outputEl.textContent += value;
       }
     } catch (e) {
       displaySessionMessage(`Could not summarize the text: ${e}`, true);
