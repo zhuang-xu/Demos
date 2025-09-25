@@ -275,7 +275,7 @@ addEventListener("load", async () => {
 
       metrics.signalOnBeforeStream();
 
-      const reader= streamm.getReader();
+      const reader= stream.getReader();
       let isFirstChunk = true;
       while (true) {
         const {done, value} = await reader.read();
