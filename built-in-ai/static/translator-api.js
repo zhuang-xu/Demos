@@ -284,7 +284,7 @@ addEventListener("load", async () => {
           isFirstChunk = false;
           outputEl.textContent = "";
         }
-        if (done) {
+        if (done || value === undefined) {
           break;
         }
         
