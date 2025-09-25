@@ -275,17 +275,22 @@ addEventListener("load", async () => {
 
       metrics.signalOnBeforeStream();
 
+      const reader= streamm.getReader();
       let isFirstChunk = true;
-      for await (const chunk of stream) {
+      while (true) {
+        const {done, value} = await reader.read();
         if (isFirstChunk) {
           spinnerEl.remove();
           isFirstChunk = false;
           outputEl.textContent = "";
         }
-
+        if (done) {
+          break;
+        }
+        
         metrics.signalOnStreamChunk();
 
-        outputEl.textContent += chunk;
+        outputEl.textContent += value;
       }
     } catch (e) {
       displaySessionMessage(`Could not translate the text: ${e}`, true);
